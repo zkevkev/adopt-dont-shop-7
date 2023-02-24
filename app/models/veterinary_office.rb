@@ -28,6 +28,6 @@ class VeterinaryOffice < ApplicationRecord
   end
 
   def office_vets_filtered_by_rating(rating_filter)
-    on_call_vets.where('review_rating >= ?', rating_filter)
+    on_call_vets.where("review_rating >= ?", rating_filter)
   end
 end
