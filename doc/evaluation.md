@@ -10,7 +10,7 @@ Each partner should present 1 user story. If your project has 2 partners, your t
 
 For each story:
 
-* Demonstrate the user story on Heroku (or localhost if the feature is not functional in Production)
+* Demonstrate the user story on your deployment site (Render or Heroku, or localhost if the feature is not functional in Production)
 * Show the test(s) for the user story
 * Show all code that implements the user story
 
