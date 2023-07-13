@@ -1,7 +1,7 @@
 # Set Up
 
-1. Fork this repo
-1. Clone your forked repo
+1. ONE partner should fork this repo
+1. Each partner can then clone your forked repo
 1. Run `bundle install`
 1. Run `rails db:{drop,create,migrate,seed}`
 1. Run the test suite with `bundle exec rspec`. You should have all passing tests to start.
