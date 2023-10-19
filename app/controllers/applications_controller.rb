@@ -1,0 +1,1 @@
+# class ApplicationsController < ApplicationController
