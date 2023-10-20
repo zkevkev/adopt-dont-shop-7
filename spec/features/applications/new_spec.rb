@@ -12,7 +12,7 @@ RSpec.describe "application new" do
     # @pet_2.applications << @application_1
   end
 
-  it 'create an application form create a new application record' do
+  it 'create an application form create a new application record and redirects to show' do
     visit "/applications/new"
     fill_in "name", with: "Bob"
     fill_in "address", with: "123 1st St"

@@ -14,6 +14,7 @@ RSpec.describe "application show" do
 
   it 'displays name, address, description, pets, and status for applicants' do
     visit "/applications/#{@application_1.id}"
+
     expect(page).to have_content(@application_1.name)
     expect(page).to have_content(@application_1.address)
     expect(page).to have_content(@application_1.description)
@@ -24,4 +25,12 @@ RSpec.describe "application show" do
     expect(current_path).to eq("/pets/#{@pet_1.id}")
   end
 
+  it 'searches pets by name and redirects to show matches' do
+    visit "/applications/#{@application_1.id}"
+    fill_in "search_app", with: "Beethoven"
+    click_button "Submit"
+
+    expect(current_path).to eq("/applications/#{@application_1.id}")
+    expect(page).to have_content(@pet_3.name)
+  end
 end

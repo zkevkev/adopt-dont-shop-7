@@ -1,7 +1,9 @@
 class ApplicationsController < ApplicationController
-  
   def show
     @application = Application.find(params[:id])
+    if params[:search_app].present?
+      @pets = Pet.search(params[:search_app])
+    end
   end
 
   def new
@@ -20,7 +22,7 @@ class ApplicationsController < ApplicationController
     if application.empty? == true 
       redirect_to "/applications/new"
     else
-    redirect_to "/applications/#{application.id}"
+      redirect_to "/applications/#{application.id}"
     end
   end
 end
