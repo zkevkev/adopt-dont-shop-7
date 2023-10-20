@@ -37,8 +37,9 @@ RSpec.describe "application new" do
     fill_in "address", with: "123 1st St"
     fill_in "city", with: "Pleasantville"
     fill_in "state", with: "CO"
-    
     click_button "Submit"
-    expect(current_path).to eq("/applications/new")
+    expect(page).to have_content("Validation failed: Zipcode can't be blank, Description can't be blank")
+    
+    # expect(current_path).to eq("/applications/new")
   end
 end
