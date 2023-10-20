@@ -20,7 +20,7 @@ class ApplicationsController < ApplicationController
     if application.empty? == true 
       redirect_to "/applications/new"
     else
-    redirect_to "/applications/#{application.id}"
+      redirect_to "/applications/#{application.id}"
     end
   end
 end

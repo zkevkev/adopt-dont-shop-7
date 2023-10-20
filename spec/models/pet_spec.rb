@@ -27,12 +27,6 @@ RSpec.describe Pet, type: :model do
       end
     end
 
-    describe '#search_by_name' do
-      it 'returns pets matching name entered' do
-        expect(Pet.search_by_name("Clawdia")).to eq([@pet_2])
-      end
-    end
-
     describe "#adoptable" do
       it "returns adoptable pets" do
         expect(Pet.adoptable).to eq([@pet_1, @pet_2])

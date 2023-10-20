@@ -1,9 +1,18 @@
 
-<p><%=@application.name%></p>
+<h1><%=@application.name%></h1>
 <p><%=@application.address%></p>
 <p><%=@application.description%></p>
 <p><%=@application.status%></p>
-<p><% @application.pets.each do |pet| %>
-    <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+<p>
+    <% @application.pets.each do |pet| %>
+        <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
     <% end %>
 </p>
+
+<% if @application.status == "In Progress" %>
+    <%= form_with url: "/pets", method: :get, local: true do |f| %>
+    <%= f.label "Add a Pet to this Application" %>
+    <%= f.text_field :search_app %>
+    <%= f.submit "Submit" %>
+    <% end %>
+<% end %>
