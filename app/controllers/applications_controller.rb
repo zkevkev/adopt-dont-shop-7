@@ -10,11 +10,14 @@ class ApplicationsController < ApplicationController
   def create
     application = Application.create!({
       name: params[:name],
-      address: "local",
+      address: params[:address],
       description: params[:description],
       status: "In Progress"
     })
-
+    if application.empty == true
+      redirect_to "/applications/new"
+    else
     redirect_to "/applications/#{application.id}"
+    end
   end
 end

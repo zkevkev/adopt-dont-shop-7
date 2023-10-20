@@ -30,4 +30,17 @@ RSpec.describe "application new" do
     expect(page).to have_content(application.description)
     expect(page).to have_content(application.status)
   end
+
+  it "tells you if the application form is incomplete" do
+    visit "/applications/new"
+    fill_in "name", with: "Bob"
+    fill_in "address", with: "123 1st St"
+    fill_in "city", with: "Pleasantville"
+    fill_in "state", with: "CO"
+    
+    click_button "Submit"
+    expect(current_path).to eq("/applications/new")
+
+
+  end
 end
