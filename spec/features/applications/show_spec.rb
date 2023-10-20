@@ -25,11 +25,14 @@ RSpec.describe "application show" do
     expect(current_path).to eq("/pets/#{@pet_1.id}")
   end
 
-  it 'add a pet to this application search searches pets by name and redirects to show ' do
+  it 'searches pets by name and redirects to show matches' do
     visit "/applications/#{@application_1.id}"
     fill_in "search_app", with: "Beethoven"
     click_button "Submit"
 
     expect(current_path).to eq("/applications/#{@application_1.id}")
+    expect(page).to have_content(@pet_3.name)
+    expect(page).not_to have_content(@pet_1.name)
+    expect(page).not_to have_content(@pet_2.name)
   end
 end
