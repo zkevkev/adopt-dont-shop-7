@@ -11,11 +11,11 @@
 
 <% if @application.status == "In Progress" %>
     <%= form_with method: :get, local: true do |f| %>
-    <%= f.label "Add a Pet to this Application" %>
+    <%= f.label "Add a Pet to this Application" %></br>
     <%= f.text_field :search_app %>
     <%= f.submit "Submit" %>
     <% end %>
-<% end %>
+<% end %></br>
 
 <% if @pets.present? %>
     <% @pets.each do |pet| %>
