@@ -40,7 +40,5 @@ RSpec.describe "application new" do
     
     click_button "Submit"
     expect(current_path).to eq("/applications/new")
-
-
   end
 end
