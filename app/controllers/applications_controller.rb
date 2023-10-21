@@ -10,7 +10,7 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    @application = Application.create!({
+    @application = Application.create({
       name: params[:name],
       address: params[:address],
       city: params[:city],
@@ -19,10 +19,10 @@ class ApplicationsController < ApplicationController
       description: params[:description],
       status: "In Progress"
     })
-    require 'pry'; binding.pry
-    if @application.save
+    if @application.valid?
       redirect_to "/applications/#{@application.id}"
-    else
+    else 
+      @application.save
       render :new
     end
   end
