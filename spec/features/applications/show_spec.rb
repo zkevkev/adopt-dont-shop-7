@@ -22,7 +22,7 @@ RSpec.describe "application show" do
     expect(page).to have_content(@application_1.status)
 
     click_link("Lucille Bald") 
-    expect(current_path).to eq("/pets/#{@pet_1.id}")
+    expect(page).to have_current_path("/pets/#{@pet_1.id}")
   end
 
   it 'searches pets by name and redirects to show matches' do
@@ -41,5 +41,30 @@ RSpec.describe "application show" do
     click_button "Adopt this Pet"
 
     
+  end
+
+  xit 'allows user to fill out why, submit application, and have status change to pending' do
+    #     As a visitor
+    # When I visit an application's show page
+    visit "/applications/#{@application_1.id}"
+    # And I have added one or more pets to the application
+    check "#{@pet_3.name}"
+    check "#{@pet_1.name}"
+    # Then I see a section to submit my application
+    # And in that section I see an input to enter why I would make a good owner for these pet(s)
+    # When I fill in that input
+    fill_in "description", with: "I love animals"
+    # And I click a button to submit this application
+    expect(page).to have_content("In Progress")
+    expect(page).to_not have_content("Pending")
+    click_button "Submit"
+    # expect(current_path).to eq("/applications/#{@application_1.id}")
+    expect(page).to have_current_path("/applications/#{@application_1.id}")
+    # Then I am taken back to the application's show page
+    # And I see an indicator that the application is "Pending"
+    expect(page).to have_content("Pending")
+    expect(page).to_not have_content("In Progress")
+    # And I see all the pets that I want to adopt
+    # And I do not see a section to add more pets to this application
   end
 end
