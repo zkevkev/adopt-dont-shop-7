@@ -27,9 +27,10 @@ RSpec.describe "application show" do
 
   it 'searches pets by name and redirects to show matches' do
     visit "/applications/#{@application_1.id}"
-    fill_in "search_app", with: "Beethoven"
-    click_button "Submit"
-
+    within("section#search") do
+      fill_in "search_app", with: "Beethoven"
+      click_button "Submit"
+    end
     expect(current_path).to eq("/applications/#{@application_1.id}")
     # this is a good opportunity to use a within block when refactoring
     expect(page).to have_content(@pet_3.name)
@@ -37,8 +38,10 @@ RSpec.describe "application show" do
 
   it 'search function can add pets to an application' do
     visit "/applications/#{@application_1.id}"
-    fill_in "search_app", with: "Beethoven"
-    click_button "Submit"
+    within("section#search") do
+      fill_in "search_app", with: "Beethoven"
+      click_button "Submit"
+    end
     click_button "Adopt this Pet"
 
     expect(@application_1.pets).to eq([@pet_1, @pet_2, @pet_3])
@@ -50,28 +53,22 @@ RSpec.describe "application show" do
     expect(page).to have_content(@pet_3.name)
   end
 
-  xit 'allows user to fill out why, submit application, and have status change to pending' do
-    #     As a visitor
-    # When I visit an application's show page
+  it 'allows user to fill out why, submit application, and have status change to pending' do
     visit "/applications/#{@application_1.id}"
-    # And I have added one or more pets to the application
-    check "#{@pet_3.name}"
-    check "#{@pet_1.name}"
-    # Then I see a section to submit my application
-    # And in that section I see an input to enter why I would make a good owner for these pet(s)
-    # When I fill in that input
-    fill_in "description", with: "I love animals"
-    # And I click a button to submit this application
-    expect(page).to have_content("In Progress")
+
     expect(page).to_not have_content("Pending")
-    click_button "Submit"
-    # expect(current_path).to eq("/applications/#{@application_1.id}")
+    expect(page).to have_content("In Progress")
+
+    within("section#submit") do
+      fill_in "description", with: "I love animals"
+      click_button "Submit"
+    end
+
     expect(page).to have_current_path("/applications/#{@application_1.id}")
-    # Then I am taken back to the application's show page
-    # And I see an indicator that the application is "Pending"
     expect(page).to have_content("Pending")
     expect(page).to_not have_content("In Progress")
-    # And I see all the pets that I want to adopt
-    # And I do not see a section to add more pets to this application
+    expect(page).to_not have_content("Add a Pet to this Application")
+    expect(page).to_not have_content("Why would you make a good owner for these pet(s)?")
+    # expect(page).to_not have_content("Why would you make a good owner for these pet(s)?")
   end
 end
