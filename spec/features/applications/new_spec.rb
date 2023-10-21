@@ -8,7 +8,7 @@ RSpec.describe "application new" do
     @pet_3 = Pet.create(adoptable: false, age: 2, breed: "saint bernard", name: "Beethoven", shelter_id: @shelter.id)
   end
 
-  it 'create an application form create a new application record and redirects to show' do
+  it 'create an application form, create a new application record, and redirects to show' do
     visit "/applications/new"
     fill_in "name", with: "Bob"
     fill_in "address", with: "123 1st St"
@@ -20,7 +20,7 @@ RSpec.describe "application new" do
 
     application = Application.last
 
-    expect(current_path).to eq("/applications/#{application.id}")
+    expect(page).to have_current_path("/applications/#{application.id}")
     expect(page).to have_content(application.name)
     expect(page).to have_content(application.address)
     expect(page).to have_content(application.description)
@@ -37,6 +37,6 @@ RSpec.describe "application new" do
 
     click_button "Submit"
     
-    expect(current_path).to eq("/applications")
+    expect(page).to have_current_path("/applications")
   end
 end

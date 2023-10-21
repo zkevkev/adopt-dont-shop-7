@@ -22,7 +22,7 @@ RSpec.describe "application show" do
     expect(page).to have_content(@application_1.status)
 
     click_link("Lucille Bald") 
-    expect(current_path).to eq("/pets/#{@pet_1.id}")
+    expect(page).to have_current_path("/pets/#{@pet_1.id}")
   end
 
   it 'searches pets by name and redirects to show matches' do
