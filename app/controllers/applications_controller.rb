@@ -30,4 +30,12 @@ class ApplicationsController < ApplicationController
       render :new
     end
   end
+
+  def update
+    application = Application.find(params[:id])
+    application.update({
+      status: params[:status],
+      description: application.description+params[:description]
+    })
+  end
 end
