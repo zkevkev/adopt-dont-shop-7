@@ -96,4 +96,17 @@ RSpec.describe "application show" do
     expect(page).to have_content(@pet_3.name)
     expect(page).to have_content(@pet_4.name)
   end
+  
+  it 'has a case insensitive search' do
+    visit "/applications/#{@application_1.id}"
+    
+    within("section#search") do
+      fill_in "search_app", with: "lOBsTeR"
+      click_button "Submit"
+    end
+    
+    expect(current_path).to eq("/applications/#{@application_1.id}")
+    
+    expect(page).to have_content(@pet_2.name)
+  end
 end
