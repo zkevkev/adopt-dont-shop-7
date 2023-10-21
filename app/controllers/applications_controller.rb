@@ -4,6 +4,10 @@ class ApplicationsController < ApplicationController
     if params[:search_app].present?
       @pets = Pet.search(params[:search_app])
     end
+
+    if params[:pet_id].present?
+      @application.add_pet(params[:pet_id])  
+    end
   end
 
   def new
