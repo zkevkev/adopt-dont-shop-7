@@ -5,7 +5,7 @@ class Application < ApplicationRecord
   validates :address, presence: true
   validates :city, presence: true
   validates :state, presence: true
-  validates :zipcode, presence: true
+  validates :zipcode, presence: true, numericality: true
   validates :description, presence: true
 
   def add_pet(pet_id)
