@@ -79,6 +79,16 @@ RSpec.describe "application show" do
     expect(page).to_not have_link("Submit")
 
     #Is this really all that is necessary? I feel like this is too simplistic for 7
-  
+  end
+
+  it 'allows for partial searches' do
+    visit "/applications/#{@application_1.id}"
+    within("section#search") do
+      fill_in "search_app", with: "Beethov"
+      click_button "Submit"
+    end
+    expect(current_path).to eq("/applications/#{@application_1.id}")
+    expect(page).to have_content(@pet_3.name)
+    save_and_open_page
   end
 end
