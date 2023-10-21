@@ -7,4 +7,9 @@ class Application < ApplicationRecord
   validates :state, presence: true
   validates :zipcode, presence: true
   validates :description, presence: true
+
+  def add_pet(pet_id)
+    pet = Pet.find(pet_id)
+    pets << pet
+  end
 end
