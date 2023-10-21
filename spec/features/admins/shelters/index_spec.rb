@@ -10,7 +10,7 @@ RSpec.describe "the admin shelters index" do
   end
 
   
-  xit 'has all shelters in system listed in reverse alphabetical order' do
+  it 'has all shelters in system listed in reverse alphabetical order' do
     visit "/admin/shelters"
 
     expect(@shelter_3.name).to appear_before(@shelter_2.name)
