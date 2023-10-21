@@ -54,25 +54,21 @@ RSpec.describe "application show" do
   end
 
   it 'allows user to fill out why, submit application, and have status change to pending' do
-    # As a visitor
-    # When I visit an application's show page
     visit "/applications/#{@application_1.id}"
-    # And I have added one or more pets to the application
-    # Then I see a section to submit my application
-    # And in that section I see an input to enter why I would make a good owner for these pet(s)
-    # When I fill in that input
+
+    expect(page).to_not have_content("Pending")
+    expect(page).to have_content("In Progress")
+
     within("section#submit") do
       fill_in "description", with: "I love animals"
-      # And I click a button to submit this application
       click_button "Submit"
-      # Then I am taken back to the application's show page
-      expect(page).to have_current_path("/applications/#{@application_1.id}")
-      # And I see an indicator that the application is "Pending"
-      expect(page).to have_content("Pending")
-      expect(page).to_not have_content("In Progress")
-      # And I see all the pets that I want to adopt
-      # And I do not see a section to add more pets to this application
-      expect(page).to_not have_content("Add a Pet to this Application")
     end
+
+    expect(page).to have_current_path("/applications/#{@application_1.id}")
+    expect(page).to have_content("Pending")
+    expect(page).to_not have_content("In Progress")
+    expect(page).to_not have_content("Add a Pet to this Application")
+    expect(page).to_not have_content("Why would you make a good owner for these pet(s)?")
+    # expect(page).to_not have_content("Why would you make a good owner for these pet(s)?")
   end
 end

@@ -27,7 +27,7 @@
 <% end %></br>
 
 <section id="submit">
-    <% if @application.pets.present? %>
+    <% if @application.pets.present? && @application.status == "In Progress" %>
         <%= form_with method: :patch, local: true do |f| %>
         <%= f.label "Why would you make a good owner for these pet(s)?" %></br>
         <%= f.text_field :description %>

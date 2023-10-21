@@ -35,7 +35,10 @@ class ApplicationsController < ApplicationController
     application = Application.find(params[:id])
     application.update({
       status: params[:status],
-      description: application.description+params[:description]
+      # this part almost certainly doesn't work, pry in and find out
+      description: params[:description]
     })
+
+    redirect_to "/applications/#{application.id}"
   end
 end

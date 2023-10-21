@@ -29,3 +29,4 @@ RSpec.describe Application, type: :model do
       end
     end
   end
+  
