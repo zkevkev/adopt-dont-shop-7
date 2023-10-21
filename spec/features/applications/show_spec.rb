@@ -71,4 +71,14 @@ RSpec.describe "application show" do
     expect(page).to_not have_content("Why would you make a good owner for these pet(s)?")
     # expect(page).to_not have_content("Why would you make a good owner for these pet(s)?")
   end
+
+  it 'cannot submit if there are no pets' do
+    visit "/applications/#{@application_1.id}"
+    
+    expect(find_field("search_app").value).to eq(nil)
+    expect(page).to_not have_link("Submit")
+
+    #Is this really all that is necessary? I feel like this is too simplistic for 7
+  
+  end
 end
