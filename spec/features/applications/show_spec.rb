@@ -106,7 +106,6 @@ RSpec.describe "application show" do
     end
     
     expect(current_path).to eq("/applications/#{@application_1.id}")
-    
     expect(page).to have_content(@pet_2.name)
   end
 end
