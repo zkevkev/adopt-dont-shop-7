@@ -1,8 +1,9 @@
 
-<h1><%=@application.name%></h1>
+<h3>Application Currently <%=@application.status%></h3>
+<p><%=@application.name%></p>
 <p><%=@application.address%></p>
 <p><%=@application.description%></p>
-<p><%=@application.status%></p>
+
 <p>
     <% @application.pets.each do |pet| %>
         <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
@@ -20,5 +21,6 @@
 <% if @pets.present? %>
     <% @pets.each do |pet| %>
         <%= pet.name %> 
+        <%= button_to "Adopt this Pet", "/applications/#{@application.id}", method: :get, params: { pet_id: pet.id } %>
     <% end %> 
 <% end %> 

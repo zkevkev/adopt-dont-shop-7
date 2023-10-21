@@ -31,6 +31,22 @@ RSpec.describe "application show" do
     click_button "Submit"
 
     expect(current_path).to eq("/applications/#{@application_1.id}")
+    # this is a good opportunity to use a within block when refactoring
+    expect(page).to have_content(@pet_3.name)
+  end
+
+  it 'search function can add pets to an application' do
+    visit "/applications/#{@application_1.id}"
+    fill_in "search_app", with: "Beethoven"
+    click_button "Submit"
+    click_button "Adopt this Pet"
+
+    expect(@application_1.pets).to eq([@pet_1, @pet_2, @pet_3])
+
+    # this goes back the the show page but with a modified url, research how to test this
+    # expect(page).to have_current_path("/applications/#{@application_1.id}")
+    
+    # this is a good opportunity to use a within block when refactoring
     expect(page).to have_content(@pet_3.name)
   end
 
