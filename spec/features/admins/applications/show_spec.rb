@@ -22,7 +22,7 @@ RSpec.describe "the admin applications show" do
     expect(page).to_not have_content(@pet_3.name)
   end
 
-  xit 'can approve a pet for adoption' do
+  it 'can approve a pet for adoption' do
     visit "/admin/applications/#{@application_1.id}"
 
     within("section#pet#{@pet_1.id}") do

@@ -5,11 +5,16 @@ class AdminApplicationsController < ApplicationController
   
   def show
     @application = Application.find(params[:id])
-
-    if params[:approved].present?
-      pet = Pet.find(params[:pet_id])
-      pet_application = PetApplication.where("pet_id = #{pet.id}", "application_id = #{application.id}")
+    @all_pet_apps = PetApplication.where("application_id = #{@application.id}").order(updated_at: :desc)
+    # @pet_application = @all_pet_apps.first
+    @approved_apps = @all_pet_apps.select do |pet_app|
+      pet_app.approved
     end
+
+    # if params[:approved].present?
+    #   pet = Pet.find(params[:pet_id])
+    #   @pet_application = PetApplication.where("pet_id = #{pet.id}", "application_id = #{application.id}")
+    # end
   end
 
   def update
@@ -17,7 +22,7 @@ class AdminApplicationsController < ApplicationController
     application = Application.find(params[:id])
     pet_application = PetApplication.where("pet_id = #{pet.id}", "application_id = #{application.id}")
     pet_application.update({ approved: params[:approved] })
-    
-    redirect_to ""
+
+    redirect_to "/admin/applications/#{application.id}"
   end
 end
