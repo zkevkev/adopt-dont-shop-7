@@ -5,7 +5,11 @@ RSpec.describe Application, type: :model do
       it { should have_many :pet_applications }
       it { should have_many(:pets).through(:pet_applications) }
     end
-
+    
+    describe "relationship with shelters" do
+      it { should belong_to(:shelter) }
+    end
+    
     describe "validate all fields in the form", type: :model do
       it { should validate_presence_of(:name) }
       it { should validate_presence_of(:address) }
