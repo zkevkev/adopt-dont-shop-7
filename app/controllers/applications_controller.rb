@@ -14,7 +14,8 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    @application = Application.create({
+    admin = Admin.create
+    @application = admin.applications.create({
       name: params[:name],
       address: params[:address],
       city: params[:city],
