@@ -20,4 +20,12 @@ RSpec.describe "the admin applications index" do
     expect(page).to have_content(@application_1.id)
     expect(page).to have_content(@application_1.status)
   end
+
+  it 'clicking and id takes you to admin show for that application' do
+    visit "/admin/applications"
+
+    click_link "#{@application_1.id}"
+
+    expect(page).to have_current_path("/admin/applications/#{@application_1.id}")
+  end
 end
