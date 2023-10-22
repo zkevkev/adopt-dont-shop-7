@@ -1,5 +1,6 @@
 <%= @application.name %>
 <% @application.pets.each do |pet| %>
   <%= pet.name %>
-  <%= button_to "Approve this Pet", "/admin/applications/#{@application.id}", method: :get %>
+  <%# having the url here may be completely unnecessary %>
+  <%= button_to "Approve this Pet", "/admin/applications/#{@application.id}", method: :get, params: { approved: true } %>
 <% end %>
