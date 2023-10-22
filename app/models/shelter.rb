@@ -4,6 +4,8 @@ class Shelter < ApplicationRecord
   validates :city, presence: true
 
   has_many :pets, dependent: :destroy
+  has_many :shelter_applications
+  has_many :applications, through: :shelter_applications
 
   belongs_to :admin
 

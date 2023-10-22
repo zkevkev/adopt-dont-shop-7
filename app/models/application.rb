@@ -1,6 +1,8 @@
 class Application < ApplicationRecord
   has_many :pet_applications
   has_many :pets, through: :pet_applications
+  has_many :shelter_applications
+  has_many :shelters, through: :shelter_applications
   validates :name, presence: true
   validates :address, presence: true
   validates :city, presence: true
