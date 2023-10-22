@@ -1,6 +1,6 @@
 <%= @application.name %>
 <% @application.pets.each do |pet| %>
-  <section id="pets<%= pet.id %>">
+  <section id="pet<%= pet.id %>">
     <%= pet.name %>
     <% if @pet_application %>
       This pet is approved

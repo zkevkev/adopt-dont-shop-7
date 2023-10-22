@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "the admin applications show" do
+RSpec.describe "the admin applications index" do
   before(:each) do
     admin = Admin.create
     @application_1 = admin.applications.create(name: "Bob", address: "123 1st St", city: "Pleasantville", state: "CO", zipcode: 80501, description: "they're cute", status: "In Progress")
@@ -14,23 +14,10 @@ RSpec.describe "the admin applications show" do
     @pet_2.applications << @application_1
   end
 
-  it 'shows every pet associated with the application' do
-    visit "/admin/applications/#{@application_1.id}"
+  it 'shows the id of all applications in the system and their status' do
+    visit "/admin/applications"
 
-    expect(page).to have_content(@pet_1.name)
-    expect(page).to have_content(@pet_2.name)
-    expect(page).to_not have_content(@pet_3.name)
-  end
-
-  xit 'can approve a pet for adoption' do
-    visit "/admin/applications/#{@application_1.id}"
-
-    within("section#pet#{@pet_1.id}") do
-      click_button "Approve this Pet"
-    end
-
-    within("section#pet#{@pet_1.id}") do
-      expect(page).to have_content("This pet is approved")
-    end
+    expect(page).to have_content(@application_1.id)
+    expect(page).to have_content(@application_1.status)
   end
 end
