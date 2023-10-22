@@ -1,6 +1,11 @@
 <%= @application.name %>
 <% @application.pets.each do |pet| %>
-  <%= pet.name %>
-  <%# having the url here may be completely unnecessary %>
-  <%= button_to "Approve this Pet", "/admin/applications/#{@application.id}", method: :get, params: { approved: true } %>
+  <section id="pets<%= pet.id %>">
+    <%= pet.name %>
+    <% if @pet_application %>
+      This pet is approved
+    <% else %>
+      <%= button_to "Approve this Pet", "/admin/applications/#{@application.id}", method: :patch, params: { approved: true, pet_id: pet.id } %>
+    <% end %>
+  </section>
 <% end %>
