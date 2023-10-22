@@ -11,9 +11,11 @@ class ApplicationsController < ApplicationController
   end
 
   def new
+    require 'pry'; binding.pry
   end
 
   def create
+    # require 'pry'; binding.pry
     @application = Application.create({
       name: params[:name],
       address: params[:address],
@@ -21,8 +23,10 @@ class ApplicationsController < ApplicationController
       state: params[:state],
       zipcode: params[:zipcode],
       description: params[:description],
-      status: "In Progress"
+      status: "In Progress",
+      shelter_id: params[:shelter_id]
     })
+    # require 'pry'; binding.pry
     if @application.valid?
       redirect_to "/applications/#{@application.id}"
     else 

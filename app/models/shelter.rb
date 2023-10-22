@@ -2,10 +2,9 @@ class Shelter < ApplicationRecord
   validates :name, presence: true
   validates :rank, presence: true, numericality: true
   validates :city, presence: true
-
   has_many :pets, dependent: :destroy
-  has_many :shelter_applications
-  has_many :applications, through: :shelter_applications
+  has_many :applications, dependent: :destroy
+
 
   belongs_to :admin
 
@@ -22,6 +21,10 @@ class Shelter < ApplicationRecord
 
   def pet_count
     pets.count
+  end
+  
+  def applications
+    applications.where(status: "Pending")
   end
 
   def adoptable_pets

@@ -1,5 +1,6 @@
 class SheltersController < ApplicationController
   def index
+
     if params[:sort].present? && params[:sort] == "pet_count"
       @shelters = Shelter.order_by_number_of_pets
     elsif params[:search].present?
@@ -21,13 +22,15 @@ class SheltersController < ApplicationController
     end
   end
 
+  def applications
+    # require 'pry'; binding.pry
+    @shelter = Shelter.find()
+  end
+
   def show
     @shelter = Shelter.find(params[:id])
   end
 
-  def applications
-    require 'pry'; binding.pry
-  end
 
   def new
   end
