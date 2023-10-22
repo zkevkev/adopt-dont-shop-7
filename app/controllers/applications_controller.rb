@@ -11,7 +11,7 @@ class ApplicationsController < ApplicationController
   end
 
   def new
-    require 'pry'; binding.pry
+    # require 'pry'; binding.pry
   end
 
   def create
@@ -23,8 +23,7 @@ class ApplicationsController < ApplicationController
       state: params[:state],
       zipcode: params[:zipcode],
       description: params[:description],
-      status: "In Progress",
-      shelter_id: params[:shelter_id]
+      status: "In Progress"
     })
     # require 'pry'; binding.pry
     if @application.valid?
