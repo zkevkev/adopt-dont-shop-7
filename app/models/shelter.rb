@@ -3,9 +3,6 @@ class Shelter < ApplicationRecord
   validates :rank, presence: true, numericality: true
   validates :city, presence: true
   has_many :pets, dependent: :destroy
-  has_many :applications, dependent: :destroy
-
-
   belongs_to :admin
 
   def self.order_by_recently_created
