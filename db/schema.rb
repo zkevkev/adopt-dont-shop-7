@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_21_214755) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_22_030055) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_21_214755) do
     t.string "city"
     t.string "state"
     t.integer "zipcode"
+    t.bigint "admin_id", null: false
+    t.index ["admin_id"], name: "index_applications_on_admin_id"
   end
 
   create_table "pet_applications", force: :cascade do |t|
@@ -80,6 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_21_214755) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "applications", "admins"
   add_foreign_key "pet_applications", "applications"
   add_foreign_key "pet_applications", "pets"
   add_foreign_key "pets", "shelters"
