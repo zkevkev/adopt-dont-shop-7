@@ -13,4 +13,5 @@ class Application < ApplicationRecord
     pet = Pet.find(pet_id)
     pets << pet
   end
+  
 end
