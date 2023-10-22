@@ -4,6 +4,8 @@ RSpec.describe Shelter, type: :model do
   describe "relationships" do
     it { should have_many(:pets) }
     it { should belong_to(:admin) }
+    it { should have_many(:applications).through(:pets) }
+    it { should have_many(:applications).through(:pet_applications) }
   end
 
   describe "validations" do
