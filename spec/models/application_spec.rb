@@ -30,5 +30,13 @@ RSpec.describe Application, type: :model do
         end
       end
     end
+
+    # describe 'class methods' do
+    #   describe '#approved_pets' do
+    #     it 'returns a list of approved pets for an application' do
+          
+    #     end
+    #   end
+    # end
   end
   

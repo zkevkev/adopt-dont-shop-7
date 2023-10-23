@@ -5,16 +5,7 @@ class AdminApplicationsController < ApplicationController
   
   def show
     @application = Application.find(params[:id])
-    @all_pet_apps = PetApplication.where("application_id = #{@application.id}").order(updated_at: :desc)
-    # @pet_application = @all_pet_apps.first
-    @approved_apps = @all_pet_apps.select do |pet_app|
-      pet_app.approved
-    end
-
-    # if params[:approved].present?
-    #   pet = Pet.find(params[:pet_id])
-    #   @pet_application = PetApplication.where("pet_id = #{pet.id}", "application_id = #{application.id}")
-    # end
+    all_pets = PetApplication.where("application_id = #{@application.id}")
   end
 
   def update
