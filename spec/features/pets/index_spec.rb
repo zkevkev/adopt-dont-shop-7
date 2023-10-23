@@ -88,9 +88,11 @@ RSpec.describe "the pets index" do
   end
 
   it 'start an application link goes to new page' do
+    admin = Admin.create
+    shelter = admin.shelters.create(name: "Aurora shelter", city: "Aurora, CO", foster_program: false, rank: 9)
     visit "/pets"
     click_link("Start an Application")
 
-    expect(page).to have_current_path("/applications/new")
+    expect(page).to have_current_path("shelters/#{shelter.id}/applications/new")
   end
 end

@@ -1,0 +1,27 @@
+<%= form_with url: "/shelters/applications", method: :post, local: true, data: { turbo: false } do |form| %>
+
+  <%= form.label "Create an Application" %></br>
+  <%= form.label :name, "Name" %>
+  <%= form.text_field  :name %></br>
+  <%= form.label :address, "Street Address" %>
+  <%= form.text_field :address %></br>
+  <%= form.label :city, "City" %>
+  <%= form.text_field :city %></br>
+  <%= form.label :state, "State" %>
+  <%= form.text_field :state %></br>
+  <%= form.label :zipcode, "Zip Code" %>
+  <%= form.number_field :zipcode %></br>
+  <%= form.label :description, "Description of why I would make a good home" %>
+  <%= form.text_field :description %></br>
+  <%= form.submit "Submit" %>
+<% end %>
+
+<% if @application != nil %>
+  <% if @application.errors.any? %>
+  <% messages = [] %>
+    <% @application.errors.full_messages.each do | message | %>
+      <% messages << message %> 
+    <%end %>
+  <%= messages.uniq %>
+  <%end %>
+<%end %>

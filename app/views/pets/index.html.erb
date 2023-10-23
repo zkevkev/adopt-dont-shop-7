@@ -17,4 +17,5 @@
   <%= link_to "Delete #{pet.name}", "/pets/#{pet.id}", method: :delete %>
 <% end %>
 
-<%= link_to "Start an Application", "/applications/new" %>
+<%= link_to "Start an Application", "/shelters/#{pet.shelter_id}/applications/new" %>
+
