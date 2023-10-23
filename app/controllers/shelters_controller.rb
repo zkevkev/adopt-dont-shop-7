@@ -21,6 +21,10 @@ class SheltersController < ApplicationController
     end
   end
 
+  def pending_application
+    require 'pry'; binding.pry
+  end
+
   def show
     @shelter = Shelter.find(params[:id])
   end
