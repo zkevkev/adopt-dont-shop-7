@@ -21,9 +21,9 @@ RSpec.describe Shelter, type: :model do
     @shelter_2 = @admin.shelters.create(name: "RGV animal @admin.shelters", city: "Harlingen, TX", foster_program: false, rank: 5)
     @shelter_3 = @admin.shelters.create(name: "Fancy pets of Colorado", city: "Denver, CO", foster_program: true, rank: 10)
 
-    @application_1 = Application.create(name: "Brendan", address: "123 1st St", city: "Denver", state: "CO", zipcode: 80207, description: "they're fun", status: "Pending")
-    @application_2 = Application.create(name: "Kevin", address: "456 A st", city: "Longmont", state: "CO", zipcode: 80501, description: "they're cute", status: "Pending")
-    @application_3 = Application.create(name: "Joe", address: "87 2nd st", city: "New York", state: "NY", zipcode: 98787, description: "they're cute", status: "In Progress")
+    @application_1 = @admin.applications.create(name: "Brendan", address: "123 1st St", city: "Denver", state: "CO", zipcode: 80207, description: "they're fun", status: "Pending")
+    @application_2 = @admin.applications.create(name: "Kevin", address: "456 A st", city: "Longmont", state: "CO", zipcode: 80501, description: "they're cute", status: "Pending")
+    @application_3 = @admin.applications.create(name: "Joe", address: "87 2nd st", city: "New York", state: "NY", zipcode: 98787, description: "they're cute", status: "In Progress")
 
     @pet_1 = @shelter_1.pets.create(name: "Mr. Pirate", breed: "tuxedo shorthair", age: 5, adoptable: false)
     @pet_2 = @shelter_1.pets.create(name: "Clawdia", breed: "shorthair", age: 3, adoptable: true)
