@@ -1,6 +1,7 @@
 class Application < ApplicationRecord
   has_many :pet_applications
   has_many :pets, through: :pet_applications
+  belongs_to :admin
   validates :name, presence: true
   validates :address, presence: true
   validates :city, presence: true
