@@ -1,8 +1,6 @@
 class AdminSheltersController < ApplicationController
   def index
     @shelters_pending = Shelter.all
-    require 'pry'; binding.pry
-    # require 'pry'; binding.pry
 
 
     # @applications = Application.all 

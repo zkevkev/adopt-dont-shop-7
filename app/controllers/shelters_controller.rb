@@ -22,7 +22,6 @@ class SheltersController < ApplicationController
   end
 
   def pending_application
-    require 'pry'; binding.pry
   end
 
   def show

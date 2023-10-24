@@ -23,7 +23,7 @@ RSpec.describe "the admin shelters index" do
   end
 
   
-  xit 'has all shelters in system listed in reverse alphabetical order' do
+  it 'has all shelters in system listed in reverse alphabetical order' do
     visit "/admin/shelters"
 
     expect(@shelter_3.name).to appear_before(@shelter_2.name)
@@ -34,7 +34,9 @@ RSpec.describe "the admin shelters index" do
   it 'lists shelters with pending applications' do
     visit "/admin/shelters"
     expect(page).to have_content("Shelters with Pending Applications")
-    expect("Shelters with Pending Applications").to appear_before(@shelter_4.name)
-    expect("Shelters with Pending Applications").to appear_before(@shelter_1.name)
+    within("section#pending") do 
+      expect("Shelters with Pending Applications").to appear_before(@shelter_4.name)
+      expect("Shelters with Pending Applications").to appear_before(@shelter_1.name)
+    end
   end
 end

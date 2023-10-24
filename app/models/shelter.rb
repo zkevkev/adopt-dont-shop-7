@@ -24,7 +24,7 @@ class Shelter < ApplicationRecord
   end
 
   def application_count
-    applications.count
+    # applications.count
   end
 
   def adoptable_pets
