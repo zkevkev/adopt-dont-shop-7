@@ -4,7 +4,7 @@
   <section id="pet<%= pet_application.pet_id %>">
     <%= pet_application.pet.name %>
     <% if pet_application.approved %>
-      This pet is approved
+      </br>This pet is approved
     <% else %>
       <%= button_to "Approve this Pet", "/admin/applications/#{@application.id}", method: :patch, params: { approved: true, pet_id: pet_application.pet_id } %>
     <% end %>
