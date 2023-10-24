@@ -1,10 +1,8 @@
 <%= @application.name %>
-<% @pets.each do |pet| %>
-  <%= pet.name %>
-<% end %>
 
 <% @application.pet_applications.each do |pet_application| %>
   <section id="pet<%= pet_application.pet_id %>">
+    <%= pet_application.pet.name %>
     <% if pet_application.approved %>
       This pet is approved
     <% else %>

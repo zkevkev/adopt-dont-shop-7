@@ -24,7 +24,7 @@ RSpec.describe "the admin applications show" do
 
   it 'can approve a pet for adoption' do
     visit "/admin/applications/#{@application_1.id}"
-
+save_and_open_page
     within("section#pet#{@pet_1.id}") do
       click_button "Approve this Pet"
     end
