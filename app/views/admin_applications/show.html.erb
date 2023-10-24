@@ -4,6 +4,8 @@
 <% end %>
 
 <% @approved_pets.each do |pet_app| %>
+<% if pet_app.approved != nil %>
+  <%= pet_app.get_info %>
 
  
   <%# <% elsif pet_app.approved? == "Approved" %> 

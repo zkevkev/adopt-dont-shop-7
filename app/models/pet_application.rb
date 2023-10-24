@@ -12,4 +12,6 @@ class PetApplication < ApplicationRecord
   end
 
 
+
+
 end

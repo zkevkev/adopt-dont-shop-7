@@ -1,9 +1,11 @@
 <% @shelters.each do |shelter| %>
   <%= shelter.name %></br>
 <% end %>
-<h2>Shelters with Pending Applications</h2>
-<% @shelters_pending.each do |pending| %>
-  <% if pending.applications.any? { |app| app.status == "Pending" } %>
-    <%= pending.name %>
-<%end  %>
-<%end  %>
+<section id="pending">
+  <h2>Shelters with Pending Applications</h2>
+  <% @shelters_pending.each do |pending| %>
+    <% if pending.applications.any? { |app| app.status == "Pending" } %>
+      <%= pending.name %>
+    <%end  %>
+  <%end  %> 
+</section>
