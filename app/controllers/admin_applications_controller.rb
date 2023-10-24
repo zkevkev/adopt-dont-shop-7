@@ -5,7 +5,7 @@ class AdminApplicationsController < ApplicationController
   
   def show
     @application = Application.find(params[:id])
-    all_pets = PetApplication.where("application_id = #{@application.id}")
+    @pets = @application.pets
   end
 
   def update

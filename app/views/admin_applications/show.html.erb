@@ -1,11 +1,14 @@
 <%= @application.name %>
-<% @application.pets.each do |pet| %>
-  <section id="pet<%= pet.id %>">
-    <%= pet.name %>
-    <% if %>
+<% @pets.each do |pet| %>
+  <%= pet.name %>
+<% end %>
+
+<% @application.pet_applications.each do |pet_application| %>
+  <section id="pet<%= pet_application.pet_id %>">
+    <% if pet_application.approved %>
       This pet is approved
     <% else %>
-      <%= button_to "Approve this Pet", "/admin/applications/#{@application.id}", method: :patch, params: { approved: true, pet_id: pet.id } %>
+      <%= button_to "Approve this Pet", "/admin/applications/#{@application.id}", method: :patch, params: { approved: true, pet_id: pet_application.pet_id } %>
     <% end %>
   </section>
 <% end %>
