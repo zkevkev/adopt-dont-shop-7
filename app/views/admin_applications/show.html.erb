@@ -1,0 +1,5 @@
+
+<% @pets.each do |pet| %>
+  <%= button_to "Approve #{pet.name}", "/admin/applications/#{@application.id}" %>
+<% end %>
+

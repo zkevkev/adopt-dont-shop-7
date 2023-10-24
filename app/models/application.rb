@@ -14,7 +14,6 @@ class Application < ApplicationRecord
   end
 
   def self.pending_applications
-    # require 'pry'; binding.pry
     test = []
     pend_app = self.all
       pend_app.each do |pend|
