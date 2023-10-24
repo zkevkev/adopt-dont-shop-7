@@ -22,7 +22,7 @@ class Shelter < ApplicationRecord
   def pet_count
     pets.count
   end
-  
+
   def adoptable_pets
     pets.where(adoptable: true)
   end
@@ -40,7 +40,6 @@ class Shelter < ApplicationRecord
   end
 
   # def self.pending_apps
-  #   x = left_joins(pets: :applications).where("status = 'Pending'")
-  #   require 'pry'; binding.pry
+  #   joins(pets: :applications).where("status = #{"Pending"}")
   # end
 end
