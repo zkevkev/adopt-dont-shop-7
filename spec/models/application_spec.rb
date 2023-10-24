@@ -4,7 +4,6 @@ RSpec.describe Application, type: :model do
     describe "relationships with pets and pet_applications" do
       it { should have_many :pet_applications }
       it { should have_many(:pets).through(:pet_applications) }
-
       it { should belong_to(:admin) }
 
     end
@@ -21,8 +20,8 @@ RSpec.describe Application, type: :model do
     describe 'instance methods' do
       describe '#add_pet' do
         it 'adds a pet to the application' do
-          application = Application.create(name: "Bob", address: "123 1st St", city: "Pleasantville", state: "CO", zipcode: 80501, description: "they're cute", status: "In Progress")
           admin = Admin.create
+          application = admin.applications.create(name: "Bob", address: "123 1st St", city: "Pleasantville", state: "CO", zipcode: 80501, description: "they're cute", status: "In Progress")
           shelter = admin.shelters.create(name: "Aurora shelter", city: "Aurora, CO", foster_program: false, rank: 9)
           pet = Pet.create(adoptable: false, age: 2, breed: "saint bernard", name: "Beethoven", shelter_id: shelter.id)
 

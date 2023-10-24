@@ -7,8 +7,8 @@ RSpec.describe PetApplication, type: :model do
   end
 
   before(:each) do
-    @application = Application.create(name: "Bob", address: "123 1st St", city: "Pleasantville", state: "CO", zipcode: 80501, description: "they're cute", status: "In Progress")
     admin = Admin.create
+    @application = admin.applications.create(name: "Bob", address: "123 1st St", city: "Pleasantville", state: "CO", zipcode: 80501, description: "they're cute", status: "In Progress")
     @shelter = admin.shelters.create(name: "Aurora shelter", city: "Aurora, CO", foster_program: false, rank: 9)
     @pet_1 = @shelter.pets.create(name: "Mr. Pirate", breed: "tuxedo shorthair", age: 5, adoptable: true)
     @pet_2 = @shelter.pets.create(name: "Clawdia", breed: "shorthair", age: 3, adoptable: true)
