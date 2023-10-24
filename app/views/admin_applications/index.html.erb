@@ -1,0 +1,4 @@
+<% @applications.each do |application| %>
+  <%= link_to "#{application.id}", "/admin/applications/#{application.id}" %>
+  <%= application.status %>
+<% end %>

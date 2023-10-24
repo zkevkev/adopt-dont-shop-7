@@ -5,6 +5,8 @@ RSpec.describe Application, type: :model do
       it { should have_many :pet_applications }
       it { should have_many(:pets).through(:pet_applications) }
 
+      it { should belong_to(:admin) }
+
     end
 
     describe "validate all fields in the form", type: :model do
@@ -15,9 +17,9 @@ RSpec.describe Application, type: :model do
       it { should validate_presence_of(:zipcode) }
       it { should validate_presence_of(:description) }
     end
-
+    
     describe 'instance methods' do
-      describe '.add_pet' do
+      describe '#add_pet' do
         it 'adds a pet to the application' do
           application = Application.create(name: "Bob", address: "123 1st St", city: "Pleasantville", state: "CO", zipcode: 80501, description: "they're cute", status: "In Progress")
           admin = Admin.create
@@ -30,5 +32,5 @@ RSpec.describe Application, type: :model do
         end
       end
     end
-  end
+end
   
