@@ -3,3 +3,12 @@
   <%= button_to "Approve #{pet.name}", "/admin/applications/#{@application.id}" %>
 <% end %>
 
+<% @approved_pets.each do |pet_app| %>
+
+ 
+  <%# <% elsif pet_app.approved? == "Approved" %> 
+  <%# <%= "#{@pet_name}'s application has been approved" %> 
+  <%# <% elsif pet_app.approved? == "Rejected" %> 
+  <%# <%= "#{@pet_name}'s application has been approved" %> 
+
+<% end %>

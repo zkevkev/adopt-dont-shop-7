@@ -9,6 +9,10 @@ class Pet < ApplicationRecord
     shelter.name
   end
 
+  # def find_id
+  #   self.pluck(:id)
+  # end
+
   def self.adoptable
     where(adoptable: true)
   end
