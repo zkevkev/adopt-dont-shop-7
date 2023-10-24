@@ -2,7 +2,7 @@
 <% @application.pets.each do |pet| %>
   <section id="pet<%= pet.id %>">
     <%= pet.name %>
-    <% if  %>
+    <% if %>
       This pet is approved
     <% else %>
       <%= button_to "Approve this Pet", "/admin/applications/#{@application.id}", method: :patch, params: { approved: true, pet_id: pet.id } %>

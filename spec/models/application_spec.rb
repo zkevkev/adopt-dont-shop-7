@@ -15,9 +15,9 @@ RSpec.describe Application, type: :model do
       it { should validate_presence_of(:zipcode) }
       it { should validate_presence_of(:description) }
     end
-
+    
     describe 'instance methods' do
-      describe '.add_pet' do
+      describe '#add_pet' do
         it 'adds a pet to the application' do
           application = Application.create(name: "Bob", address: "123 1st St", city: "Pleasantville", state: "CO", zipcode: 80501, description: "they're cute", status: "In Progress")
           admin = Admin.create
@@ -30,13 +30,5 @@ RSpec.describe Application, type: :model do
         end
       end
     end
-
-    # describe 'class methods' do
-    #   describe '#approved_pets' do
-    #     it 'returns a list of approved pets for an application' do
-          
-    #     end
-    #   end
-    # end
-  end
+end
   

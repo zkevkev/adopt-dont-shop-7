@@ -3,6 +3,7 @@ class PetApplication < ApplicationRecord
   belongs_to :application
 
   def self.approved_pets(application_id)
-    where("application_id = #{application_id}, approved = true")
+    x = self.where("application_id = #{application_id}, approved = true")
+    require 'pry'; binding.pry
   end
 end

@@ -22,7 +22,7 @@ RSpec.describe PetApplication, type: :model do
   describe "class methods" do
     describe ".approved_pets" do
       it "returns a list of approved pets for a given application id" do        
-        expect(PetApplication.approved_pets(@application.id)).to eq("")
+        expect(PetApplication.approved_pets(@application.id)).to eq([])
       end
     end
   end
