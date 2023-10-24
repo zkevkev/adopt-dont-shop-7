@@ -28,10 +28,23 @@ RSpec.describe "the admin applications show" do
     within("section#pet#{@pet_1.id}") do
       click_button "Approve this Pet"
     end
-save_and_open_page
+
     within("section#pet#{@pet_1.id}") do
       expect(page).to have_content("This pet is approved")
       expect(page).to_not have_content("Approve this Pet")
+    end
+  end
+
+  it 'can reject a pet for adoption' do
+    visit "/admin/applications/#{@application_1.id}"
+
+    within("section#pet#{@pet_1.id}") do
+      click_button "Reject this Pet"
+    end
+
+    within("section#pet#{@pet_1.id}") do
+      expect(page).to have_content("This pet is rejected")
+      expect(page).to_not have_content("Reject this Pet")
     end
   end
 end
