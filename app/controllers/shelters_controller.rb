@@ -21,6 +21,9 @@ class SheltersController < ApplicationController
     end
   end
 
+  def pending_application
+  end
+
   def show
     @shelter = Shelter.find(params[:id])
   end

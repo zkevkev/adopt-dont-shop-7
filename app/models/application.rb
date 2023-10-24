@@ -12,4 +12,15 @@ class Application < ApplicationRecord
     pet = Pet.find(pet_id)
     pets << pet
   end
+
+  # def self.pending_applications
+  #   test = []
+  #   pend_app = self.all
+  #     pend_app.each do |pend|
+  #       if pend.status == "Pending"
+  #         test << pend
+  #       end
+  #     end
+  #   test
+  # end
 end
