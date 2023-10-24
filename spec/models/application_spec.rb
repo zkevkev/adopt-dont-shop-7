@@ -16,7 +16,7 @@ RSpec.describe Application, type: :model do
     end
 
     describe 'instance methods' do
-      describe '.add_pet' do
+      describe '#add_pet' do
         it 'adds a pet to the application' do
           application = Application.create(name: "Bob", address: "123 1st St", city: "Pleasantville", state: "CO", zipcode: 80501, description: "they're cute", status: "In Progress")
           admin = Admin.create
