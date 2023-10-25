@@ -3,8 +3,8 @@ class PetsController < ApplicationController
     if params[:search].present?
       @pets = Pet.search(params[:search])
     elsif params[:search_app].present?
-      @pets = Pet.search(params[:search_app])
-      redirect_back fallback_location: "/pets"
+      # @pets = Pet.search(params[:search_app])
+      # redirect_back fallback_location: "/pets"
     else
       @pets = Pet.adoptable
     end
