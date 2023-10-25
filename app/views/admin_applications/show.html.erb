@@ -11,8 +11,8 @@
     <% elsif pet_application.rejected %>
       </br>This pet is rejected
     <% else %>
-      <%= button_to "Approve this Pet", "/admin/applications/#{@application.id}", method: :patch, params: { approved: true, pet_id: pet_application.pet_id } %>
-      <%= button_to "Reject this Pet", "/admin/applications/#{@application.id}", method: :patch, params: { rejected: true, pet_id: pet_application.pet_id } %>
+      <%= button_to "Approve this Pet", "/admin/applications/#{@application.id}", method: :patch, params: { approved: true, pet_id: pet_application.pet_id }, data: { turbo: false } %>
+      <%= button_to "Reject this Pet", "/admin/applications/#{@application.id}", method: :patch, params: { rejected: true, pet_id: pet_application.pet_id }, data: { turbo: false } %>
     <% end %>
   </section>
 <% end %>
