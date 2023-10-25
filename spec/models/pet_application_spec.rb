@@ -18,4 +18,14 @@ RSpec.describe PetApplication, type: :model do
     @application.pets << @pet_2
     @application.pets << @pet_3
   end
+
+  # describe 'class methods' do
+  #   describe '.find_pet_app' do
+  #     it 'returns a pet_application when given an application id and a pet id' do
+  #       query = PetApplication.find_pet_app(@application.id, @pet_1.id)
+        
+  #       require 'pry'; binding.pry
+  #     end
+  #   end
+  # end
 end
