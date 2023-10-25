@@ -14,8 +14,7 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    admin = Admin.create
-    @application = admin.applications.create({
+    @application = Application.create({
       name: params[:name],
       address: params[:address],
       city: params[:city],
@@ -36,6 +35,7 @@ class ApplicationsController < ApplicationController
     application = Application.find(params[:id])
     application.update({
       status: params[:status],
+      # this part almost certainly doesn't work, pry in and find out
       description: params[:description]
     })
 
