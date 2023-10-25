@@ -1,4 +1,7 @@
-<%= @application.name %>
+<h2 id="header">
+  <%= @application.name %></br>
+  <%= @application.status %>
+</h2>
 
 <% @application.pet_applications.each do |pet_application| %>
   <section id="pet<%= pet_application.pet_id %>">
