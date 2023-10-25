@@ -1,0 +1,18 @@
+<h2 id="header">
+  <%= @application.name %></br>
+  <%= @application.status %>
+</h2>
+
+<% @application.pet_applications.each do |pet_application| %>
+  <section id="pet<%= pet_application.pet_id %>">
+    <%= pet_application.pet.name %>
+    <% if pet_application.approved %>
+      </br>This pet is approved
+    <% elsif pet_application.rejected %>
+      </br>This pet is rejected
+    <% else %>
+      <%= button_to "Approve this Pet", "/admin/applications/#{@application.id}", method: :patch, params: { approved: true, pet_id: pet_application.pet_id } %>
+      <%= button_to "Reject this Pet", "/admin/applications/#{@application.id}", method: :patch, params: { rejected: true, pet_id: pet_application.pet_id } %>
+    <% end %>
+  </section>
+<% end %>

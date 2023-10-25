@@ -21,7 +21,7 @@ RSpec.describe VeterinaryOffice, type: :model do
   end
 
   describe 'class methods' do
-    describe '#search' do
+    describe '.search' do
       it 'returns partial matches' do
         expect(VeterinaryOffice.search('Vets')).to eq([
             @vet_office_1, @vet_office_2
@@ -29,7 +29,7 @@ RSpec.describe VeterinaryOffice, type: :model do
       end
     end
 
-    describe '#order_by_recently_created' do
+    describe '.order_by_recently_created' do
       it 'orders the offices by those most recently created first' do
         expect(VeterinaryOffice.order_by_recently_created).to eq([
           @vet_office_2, @vet_office_1
@@ -37,7 +37,7 @@ RSpec.describe VeterinaryOffice, type: :model do
       end
     end
 
-    describe '#order_by_number_of_vets' do
+    describe '.order_by_number_of_vets' do
       it 'orders the offices by those with most veterinarians to least' do
         expect(VeterinaryOffice.order_by_number_of_vets).to eq([
           @vet_office_1, @vet_office_2
@@ -47,26 +47,26 @@ RSpec.describe VeterinaryOffice, type: :model do
   end
 
   describe 'instance methods' do
-    describe '.vet_count' do
+    describe '#vet_count' do
       it 'returns the number of veterinarians associated with the given office' do
         expect(@vet_office_1.vet_count).to eq(3)
         expect(@vet_office_2.vet_count).to eq(1)
       end
     end
 
-    describe '.alphabetical_vets' do
+    describe '#alphabetical_vets' do
       it 'returns the office veterinarians alphabetically by name' do
         expect(@vet_office_1.alphabetical_vets).to eq([@vet_2, @vet_1])
       end
     end
 
-    describe '.on_call_vets' do
+    describe '#on_call_vets' do
       it 'only returns office veterinarians who are on call' do
         expect(@vet_office_1.on_call_vets).to eq([@vet_1, @vet_2])
       end
     end
 
-    describe '.office_vets_filtered_by_rating' do
+    describe '#office_vets_filtered_by_rating' do
       it 'filters the office vets based on given rating' do
         expect(@vet_office_1.office_vets_filtered_by_rating(9)).to eq([@vet_1])
       end

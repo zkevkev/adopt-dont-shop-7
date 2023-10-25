@@ -1,6 +1,7 @@
 class Application < ApplicationRecord
   has_many :pet_applications
   has_many :pets, through: :pet_applications
+  belongs_to :admin
   validates :name, presence: true
   validates :address, presence: true
   validates :city, presence: true
@@ -12,4 +13,15 @@ class Application < ApplicationRecord
     pet = Pet.find(pet_id)
     pets << pet
   end
+
+  # def self.pending_applications
+  #   test = []
+  #   pend_app = self.all
+  #     pend_app.each do |pend|
+  #       if pend.status == "Pending"
+  #         test << pend
+  #       end
+  #     end
+  #   test
+  # end
 end
