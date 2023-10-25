@@ -24,7 +24,7 @@ class Shelter < ApplicationRecord
   end
 
   def application_count
-    applications.count
+    # applications.count
   end
 
   def adoptable_pets
@@ -44,6 +44,19 @@ class Shelter < ApplicationRecord
   end
 
   def self.pending_apps
+    pending_app = self.all
+
+    pending_app.each do |shelter|
+      
+      @pending = shelter.applications.select do |application|
+        application.status == "Pending"
+      end
+
+    end
+    require 'pry'; binding.pry
+    shelters = @pending.flat_map do |application|
+      application.shelter
+    end
     
   end
 end
