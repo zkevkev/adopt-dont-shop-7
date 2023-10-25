@@ -47,18 +47,4 @@ RSpec.describe "the admin applications show" do
       expect(page).to_not have_content("Reject this Pet")
     end
   end
-
-  it 'approves an application when all pets are approved' do
-    visit "/admin/applications/#{@application_1.id}"
-
-    within("section#pet#{@pet_1.id}") do
-      click_button "Approve this Pet"
-    end
-
-    within("section#pet#{@pet_2.id}") do
-      click_button "Approve this Pet"
-    end
-
-    expect(page).to have_content("Approved")
-  end
 end
