@@ -39,20 +39,20 @@ class Shelter < ApplicationRecord
     find_by_sql "SELECT * FROM shelters ORDER BY name DESC"
   end
 
-  def self.pending_apps
-    pending_app = self.all
+  # def self.pending_apps
+  #   pending_app = self.all
 
-    pending_app.each do |shelter|
+  #   pending_app.each do |shelter|
       
-      @pending = shelter.applications.select do |application|
-        application.status == "Pending"
-      end
+  #     @pending = shelter.applications.select do |application|
+  #       application.status == "Pending"
+  #     end
 
-    end
-    require 'pry'; binding.pry
-    shelters = @pending.flat_map do |application|
-      application.shelter
-    end
+  #   end
+  #   require 'pry'; binding.pry
+  #   shelters = @pending.flat_map do |application|
+  #     application.shelter
+  #   end
     
-  end
+  # end
 end
