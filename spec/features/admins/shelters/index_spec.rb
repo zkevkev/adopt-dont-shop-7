@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "the admin shelters index" do
+RSpec.describe "the admin shelters index", type: :feature do
   before(:each) do
     admin = Admin.create
     @shelter_1 = admin.shelters.create(name: "Aurora shelter", city: "Aurora, CO", foster_program: false, rank: 9)
@@ -32,7 +32,9 @@ RSpec.describe "the admin shelters index" do
 
   it 'lists shelters with pending applications' do
     visit "/admin/shelters"
+
     expect(page).to have_content("Shelters with Pending Applications")
+
     within("section#pending") do 
       expect("Shelters with Pending Applications").to appear_before(@shelter_4.name)
       expect("Shelters with Pending Applications").to appear_before(@shelter_1.name)

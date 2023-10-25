@@ -39,7 +39,7 @@ class Shelter < ApplicationRecord
     find_by_sql "SELECT * FROM shelters ORDER BY name DESC"
   end
 
-  # def self.pending_apps
-  #   joins(:applications).where(status: "Pending")
-  # end
+  def self.pending_apps
+    joins(:applications).where(applications: { status: "Pending" }).distinct.pluck(:name).join(", ")
+  end
 end

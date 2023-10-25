@@ -4,9 +4,5 @@
 
 <section id="pending">
   <h2>Shelters with Pending Applications</h2>
-  <% @shelters.each do |shelter| %>
-    <% if shelter.applications.any? { |app| app.status == "Pending" } %>
-      <%= shelter.name %>
-    <% end %>
-  <% end %> 
+  <%= @pending %>
 </section>
